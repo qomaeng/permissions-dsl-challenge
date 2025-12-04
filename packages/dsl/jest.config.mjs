@@ -1,0 +1,25 @@
+/** @type {import('jest').Config} */
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+
+  moduleFileExtensions: ['js', 'json', 'ts'],
+  rootDir: 'src',
+  testRegex: '.*\\.(test|spec)\\.ts$',
+  transform: {
+    '^.+\\.m?[tj]s$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          module: 'ESNext',
+          moduleResolution: 'Node',
+          isolatedModules: false,
+        },
+      },
+    ],
+  },
+
+  collectCoverageFrom: ['src/**/*.(j|t)s', '!src/**/*.(test|spec).(j|t)s'],
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+};

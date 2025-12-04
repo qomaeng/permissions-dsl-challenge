@@ -1,0 +1,46 @@
+{
+  "name": "@permissions-dsl-challenge/dsl",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "pnpm build:js && pnpm build:types && tsc-alias -p tsconfig.build.json",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build:js": "tsup --silent",
+    "build:clean": "pnpm clean:build && pnpm build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:clean": "pnpm clean:test && pnpm test",
+    "test:debug": "node --inspect-brk node_modules/jest/bin/jest --runInBand",
+    "clean": "pnpm clean:build && pnpm clean:test",
+    "clean:build": "rimraf ./dist ./tsconfig*.tsbuildinfo",
+    "clean:test": "jest --clearCache && rimraf ./coverage",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,test}/**/*.ts\""
+  },
+  "devDependencies": {
+    "@permissions-dsl-challenge/eslint-config": "workspace:*",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.10.1",
+    "globals": "^16.5.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "tsc-alias": "^1.8.16",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  }
+}
