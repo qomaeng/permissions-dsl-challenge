@@ -7,16 +7,7 @@ export default {
   rootDir: 'src',
   testRegex: '.*\\.(test|spec)\\.ts$',
   transform: {
-    '^.+\\.m?[tj]s$': [
-      'ts-jest',
-      {
-        tsconfig: {
-          module: 'ESNext',
-          moduleResolution: 'Node',
-          isolatedModules: false,
-        },
-      },
-    ],
+    '^.+\\.m?[tj]s$': 'ts-jest',
   },
 
   collectCoverageFrom: ['src/**/*.(j|t)s', '!src/**/*.(test|spec).(j|t)s'],
