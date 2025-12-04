@@ -1,0 +1,25 @@
+{
+  "name": "@permissions-dsl-challenge/workspace",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "format": "pnpm -r format",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean",
+    "apps": "pnpm --filter \"{apps/*}\"",
+    "packages": "pnpm --filter \"{packages/*}\""
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.4",
+    "rimraf": "^6.1.2"
+  },
+  "engines": {
+    "pnpm": "^10",
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.24.0"
+}
