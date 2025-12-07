@@ -38,7 +38,7 @@ export function evaluateExpression(
 function _evaluateExpression(
   expr: Expression,
   data: Record<string, Record<string, Value>>,
-): boolean | null {
+): boolean {
   // expr이 리스트가 아닌 단일 타입의 값이 될 때까지 재귀 호출 후 값 던지기
   if ('and' in expr) {
     return expr.and.every((e) => _evaluateExpression(e, data)); // AI Prompt: reduceUntil 가능해?
@@ -49,8 +49,7 @@ function _evaluateExpression(
 
   // not 인 경우 재귀 호출 후 반전 값 던지기
   if ('not' in expr) {
-    const v = _evaluateExpression(expr.not, data);
-    return v === null ? v : !v;
+    return !_evaluateExpression(expr.not, data);
   }
 
   // 여기부터 expr is BinaryExpression
@@ -111,6 +110,7 @@ function _extractFieldValue(
   if (value === undefined) {
     throw new InsufficientDataError(`Insufficient data: ${fieldName}`);
   }
+  // TODO: Type check
 
   return value;
 }
